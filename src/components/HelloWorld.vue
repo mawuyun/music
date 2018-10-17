@@ -12,11 +12,11 @@
         </v-scroll>
       </div>
       <p slot="1">
-         <ul>
-            <li v-for="item in 20" :key="item">{{item}}</li>
-          </ul>
+        <ul>
+          <li v-for="item in 20" :key="item">{{item}}</li>
+        </ul>
       </p>
-      <p slot="2">你能不能不要说大实话</p>
+      <p slot="2">我说你这个人，怎么...怎么这么好看</p>
     </v-tab>
   </div>
 </template>
@@ -97,8 +97,5 @@ a {
 }
 .list{
   display: block;
-}
-.testScrollThree{
-  /* height: 100%; */
 }
 </style>
