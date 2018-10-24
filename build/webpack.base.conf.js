@@ -36,7 +36,9 @@ const webpackConfig = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      '@': resolve('src'),
+      'common': resolve('src/common'),
+      'components': resolve('src/components')
     }
   },
   module: {
@@ -93,7 +95,9 @@ const webpackConfig = {
 }
 
 module.exports = vuxLoader.merge(webpackConfig, {
-  plugins: [{name: 'vux-ui'}, {
-    name: 'duplicate-style'
-  }]
+  plugins: [
+    {name: 'vux-ui'}, 
+    {name: 'duplicate-style'},
+    {name: 'less-theme', path:'src/common/less/theme.less'}
+  ]
 })

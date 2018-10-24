@@ -4,5 +4,5 @@ const prodEnv = require('./prod.env');
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  API_ROOT: '"www.baidu.com"'
+  API_ROOT: '"https://c.y.qq.com"'
 });

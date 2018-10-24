@@ -1,8 +1,8 @@
 import axios from 'axios'; // 注意先安装哦
-import config from './config.js'; // 倒入默认配置
+import {config} from './config.js'; // 倒入默认配置
 // import qs from 'qs'; // 序列化请求数据，视服务端的要求
 // import store from '../store.js';
-import md5 from 'md5';
+// import md5 from 'md5';
 import {
   // Toast,
   Indicator,
@@ -10,31 +10,10 @@ import {
 } from 'mint-ui';
 import 'mint-ui/lib/style.css';
 
-function getTime() {
-  function pad2(n) {
-    return n < 10 ? '0' + n : n;
-  }
-  function getRestTime() {
-    let date = new Date();
-    return date.getFullYear().toString() + pad2(date.getMonth() + 1) + pad2(date.getDate()) + pad2(date.getHours()) + pad2(date.getMinutes()) + pad2(date.getSeconds());
-  }
-  return getRestTime;
-}
-let Time = getTime();
-// 生成signature
-function signature(Content, Time) {
-  return `DLMAppServicerequestHandling${Content}appKey=DLM_SCW_APP_REQUEST_HANDLINGformat=jsontimestamp=${Time}signatureMethod=md5version=1RfXOjO07`;
-}
-
 export default function $axios(options) {
-  const StrMd5 = md5(signature(options, Time));
-  let theHeaders = config.headers;
-  theHeaders.signature = StrMd5.toLocaleUpperCase();
-  theHeaders.timestamp = Time();
   return new Promise((resolve, reject) => {
     const instance = axios.create({
       baseURL: config.baseURL,
-      headers: theHeaders,
       transformResponse: [function(data) {}]
     });
 

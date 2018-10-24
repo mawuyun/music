@@ -1,7 +1,8 @@
-import VTab from '@/components/VTab';
+import VTab from '@/components/v-tab';
+import RTab from '@/components/r-tab';
 import VScroll from '@/components/VScroll';
 
-const XComponent = [VTab, VScroll];
+const XComponent = [VTab, RTab, VScroll];
 
 const allComponent = (Vue, option) => {
   /* eslint-disable no-new */
