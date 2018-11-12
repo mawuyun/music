@@ -9,11 +9,11 @@ import {
   MessageBox
 } from 'mint-ui';
 import 'mint-ui/lib/style.css';
-
 export default function $axios(options) {
   return new Promise((resolve, reject) => {
     const instance = axios.create({
       baseURL: config.baseURL,
+      header: config.headers,
       transformResponse: [function(data) {}]
     });
 

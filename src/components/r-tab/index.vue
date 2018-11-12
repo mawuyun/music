@@ -33,9 +33,15 @@ export default {
       linkIndex: 0
     };
   },
+  watch: {
+    '$route'(to, from) {
+      let _this = this;
+      _this.linkIndex = to.meta.tabIndex;
+      console.log(to, 'to');
+    }
+  },
   created() {
     let _this = this;
-    console.log(_this.tabItems[0]);
     _this.handler(_this.tabItems[0]);
   },
   methods: {

@@ -2,7 +2,9 @@
   <div id="app">
     <m-header></m-header>
     <r-tab :tabItems="tabItems"></r-tab>
-    <router-view/>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 

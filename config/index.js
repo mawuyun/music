@@ -6,11 +6,17 @@ const path = require('path')
 
 module.exports = {
   dev: {
-
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/cgi-bin':{
+        target: "https://u.y.qq.com",
+        // pathRewrite: { "^/epc" : "" },
+        changeOrigin: true,
+        secure: false,
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

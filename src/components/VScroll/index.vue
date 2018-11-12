@@ -1,7 +1,7 @@
 <template>
   <!-- scroll 的外层一定要设置 高度 -->
   <div class="scroll-wrap" :style="{height:wrapperHeight+'px'}" ref="wrapper">
-    <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :autoFill=false ref="loadmore">
+    <mt-loadmore :distanceIndex=4 :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :autoFill=false ref="loadmore">
       <slot></slot>
     </mt-loadmore>
     <p v-show="noMoreData" class="noMoreData">
@@ -29,8 +29,6 @@ export default {
   },
   mounted() {
     let _this = this;
-    console.log(document.documentElement.clientHeight, 'document.documentElement.clientHeight');
-    console.log(_this.$refs.wrapper.getBoundingClientRect().top, '_this.$refs.wrapper.getBoundingClientRect().top');
     _this.wrapperHeight = document.documentElement.clientHeight - _this.$refs.wrapper.getBoundingClientRect().top;
   },
   methods: {
@@ -72,6 +70,7 @@ export default {
 <style lang="less" scoped>
 .scroll-wrap{
   overflow: scroll;
+  -webkit-overflow-scrolling: touch;
   .noMoreData{
     padding: 5px 0;
     text-align: center;

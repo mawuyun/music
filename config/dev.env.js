@@ -4,5 +4,7 @@ const prodEnv = require('./prod.env');
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  API_ROOT: '"https://c.y.qq.com"'
+  API_ROOTPC: '"https://u.y.qq.com"',
+  API_ROOTH5:'"https://c.y.qq.com"',
+  API_ROOT: '""'
 });

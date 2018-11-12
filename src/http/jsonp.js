@@ -6,17 +6,17 @@ import {
 } from 'mint-ui';
 import 'mint-ui/lib/style.css';
 
-export default function jsonp(url, params, paramsOptions) {
+export default function jsonp(url, params, paramsOptions, domain) {
   Indicator.open(); // 开始请求动画
   return new Promise((resolve, reject) => {
     const finalParams = Object.assign({}, params, commonParams);
-    url = config.baseURL + url + (url.indexOf('?') < 0 ? '?' : '&') + handleParams(finalParams);
+    url = config[domain || 'baseURL'] + url + (url.indexOf('?') < 0 ? '?' : '&') + handleParams(finalParams);
     let finalOptions = Object.assign({}, options, paramsOptions); // 合并options
     initJsonp(url, finalOptions, (err, data) => {
       if (!err) {
         Indicator.close(); // 停止请求动画
         if (data.code === ERR_OK) { // 判断是否code为0
-          resolve(data.data);
+          resolve(data);
         } else {
           MessageBox('请求出错');
         }
