@@ -1,17 +1,18 @@
 <template>
     <transition name="silde">
       <div class="singer-detail">
-        <p>hahaahhah</p>
       </div>
     </transition>
 </template>
 
 <script>
 import {mapGetters} from 'vuex';
+import createSong from 'common/js/song';
 export default {
   name: 'singer-detail',
   data() {
     return {
+      song: []
     };
   },
   computed: {
@@ -47,8 +48,16 @@ export default {
         name: 'MusicJsonCallbacksinger_track__jp2'
       };
       _this.$api.singerDetail(singerDetailParams, singerDetailOptions).then(res => {
-        console.log(res, 'singerDetail');
+        console.log(res.data.list, 'singerDetail');
+        console.log(_this._getNormalSingerDetail(res.data.list), 'songDetail');
       });
+    },
+    _getNormalSingerDetail(list) {
+      let songList = [];
+      list.forEach(item => {
+        songList.push(createSong(item.musicData));
+      });
+      return songList;
     }
   }
 };
@@ -64,7 +73,6 @@ export default {
     bottom: 0;
     background: @color-background;
   }
-
   .silde-enter-active, .silde-leave-active{
     transition: all 0.3s;
   }
