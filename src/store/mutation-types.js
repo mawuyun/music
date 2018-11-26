@@ -1,1 +1,13 @@
 export const SET_SINGER = 'SET_SINGER';
+
+export const SETPLAYING = 'SETPLAYING';
+
+export const SETFULLSCREEN = 'SETFULLSCREEN';
+
+export const SETPLAYLIST = 'SETPLAYLIST';
+
+export const SETSEQUENCELIST = 'SETSEQUENCELIST';
+
+export const SETMODE = 'SETMODE';
+
+export const SETCURRENTINDEX = 'SETCURRENTINDEX';

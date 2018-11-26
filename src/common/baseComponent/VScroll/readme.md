@@ -27,3 +27,10 @@ _this.$refs.VScroll.trueAllLoaded();// 禁止上拉
 
 注： VScroll 是 ref 自定义的
 ```
+
+###配置
+```
+height  如果传入height有值 并且不为0 则滚动外层高度为height  不传为自动识别高度
+
+showDataOver  在没有更多数据时  是否在底部显示提示
+```

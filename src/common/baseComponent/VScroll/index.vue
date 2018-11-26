@@ -17,6 +17,14 @@ export default {
     params: {
       type: Object,
       default: null
+    },
+    height: {
+      type: Number,
+      default: 1
+    },
+    showDataOver: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -29,7 +37,7 @@ export default {
   },
   mounted() {
     let _this = this;
-    _this.wrapperHeight = document.documentElement.clientHeight - _this.$refs.wrapper.getBoundingClientRect().top;
+    _this.wrapperHeight = _this.height !== 1 && _this.height !== 0 ? _this.height : document.documentElement.clientHeight - _this.$refs.wrapper.getBoundingClientRect().top;
   },
   methods: {
     loadTop() {
@@ -55,7 +63,9 @@ export default {
     trueAllLoaded() { // 禁止上拉
       let _this = this;
       _this.allLoaded = true;
-      _this.noMoreData = true; // 无更多数据
+      if (_this.showDataOver === true) {
+        _this.noMoreData = true; // 无更多数据
+      }
     },
     falseAllLoaded() { // 允许上拉
       let _this = this;

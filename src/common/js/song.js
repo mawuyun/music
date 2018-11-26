@@ -1,10 +1,10 @@
 class Song {
-  constructor({id, mid, singer, name, blbum, duration, image, url}) {
+  constructor({id, mid, singer, name, album, duration, image, url}) {
     this.id = id;
     this.mid = mid;
     this.singer = singer;
     this.name = name;
-    this.blbum = blbum;
+    this.album = album;
     this.duration = duration;
     this.image = image;
     this.url = url;
@@ -26,10 +26,9 @@ export default function createSong(musicData) {
 
 function filterSinger(singer) {
   let ret = [];
-  if (singer) {
+  if (!singer) {
     return '';
   }
-  debugger;
   singer.forEach((s) => {
     ret.push(s.name);
   });
